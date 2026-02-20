@@ -1,0 +1,80 @@
+<!-- recommended__area-start -->
+{% if user.is_authenticated and recommended_products %}
+<section class="topsell__area-2 pt-15 pb-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__head d-flex justify-content-between mb-10">
+                    <div class="section__title">
+                        <h5 class="st-titile">Recommended For You</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-bs-slider-2">
+                <div class="product-slider-2 swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for product in recommended_products %}
+                        <div class="product__item swiper-slide">
+                            <div class="product__thumb fix">
+                                <div class="product-image w-img">
+                                    <a href="{% url 'shop:product_detail' product.id product.slug %}">
+                                        {% if product.image %}
+                                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        {% else %}
+                                        <img src="{% static 'img/product/tp-1.jpg' %}" alt="default">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="product-action">
+                                    <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal"
+                                        data-bs-target="#productModalId">
+                                        <i class="fal fa-eye"></i>
+                                        <i class="fal fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="icon-box icon-box-1">
+                                        <i class="fal fa-heart"></i>
+                                        <i class="fal fa-heart"></i>
+                                    </a>
+                                    <a href="#" class="icon-box icon-box-1">
+                                        <i class="fal fa-layer-group"></i>
+                                        <i class="fal fa-layer-group"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product__content">
+                                <h6><a href="{% url 'shop:product_detail' product.id product.slug %}">{{ product.name
+                                        }}</a></h6>
+                                <div class="rating mb-5">
+                                    <ul>
+                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                    </ul>
+                                    <span>(01 review)</span>
+                                </div>
+                                <div class="price mb-10">
+                                    <span>${{ product.price }}</span>
+                                </div>
+                            </div>
+                            <div class="product__add-cart text-center">
+                                <button type="button"
+                                    class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bs-button bs2-button-prev"><i class="fal fa-chevron-left"></i></div>
+                <div class="bs-button bs2-button-next"><i class="fal fa-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- recommended__area-end -->

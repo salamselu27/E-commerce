@@ -1,0 +1,492 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/slider.html' %}
+<!-- features__area-start -->
+<section class="features__area pt-20">
+    <div class="container">
+        <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-4 row-cols-md-2 row-cols-sm-2 row-cols-1 gx-0">
+            <div class="col">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fal fa-truck"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>FREE DELIVERY</h6>
+                        <p>For all orders over $120</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fal fa-money-check"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>SAFE PAYMENT</h6>
+                        <p>100% secure payment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="features__item d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fal fa-comments-alt"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>24/7 HELP CENTER</h6>
+                        <p>Delicated 24/7 support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="features__item features__item-last d-flex white-bg">
+                    <div class="features__icon mr-20">
+                        <i class="fad fa-user-headset"></i>
+                    </div>
+                    <div class="features__content">
+                        <h6>FRIENDLY SERVICES</h6>
+                        <p>30 day satisfaction guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- features__area-end -->
+
+<!-- banner__area-start -->
+<section class="banner__area pt-20 pb-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="banner__item p-relative w-img mb-30">
+                    <div class="banner__img">
+                        <a href="product-details.html"><img src="{% static 'img/banner/banner-1.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="banner__content">
+                        <h6><a href="product-details.html">Intelligent <br> New Touch Control</a></h6>
+                        <p>Discount 20% On Products</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="banner__item p-relative mb-30 w-img">
+                    <div class="banner__img">
+                        <a href="product-details.html"><img src="{% static 'img/banner/banner-2.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="banner__content">
+                        <h6><a href="product-details.html">On-sale <br> Best Prices</a></h6>
+                        <p>Limited Time: Online Only!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6">
+                <div class="banner__item p-relative mb-30 w-img">
+                    <div class="banner__img">
+                        <a href="product-details.html"><img src="{% static 'img/banner/banner-3.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="banner__content">
+                        <h6><a href="product-details.html">Hot Sale <br> Super Laptops 2022 </a></h6>
+                        <p>Free Shipping All Order</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner__area-end -->
+
+<section class="topsell__area-2 pt-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__head d-flex justify-content-between mb-10">
+                    <div class="section__title">
+                        <h5 class="st-titile">Top Selling Products</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in top_selling %}
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item mb-20">
+                    <div class="product__thumb fix">
+                        <div class="product-image w-img">
+                            <a href="{% url 'shop:product_detail' product.id product.slug %}">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static 'img/product/tp-1.jpg' %}" alt="default">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="product-action">
+                            <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal"
+                                data-bs-target="#productModalId">
+                                <i class="fal fa-eye"></i>
+                                <i class="fal fa-eye"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-heart"></i>
+                                <i class="fal fa-heart"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-layer-group"></i>
+                                <i class="fal fa-layer-group"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product__content">
+                        <h6><a href="{% url 'shop:product_detail' product.id product.slug %}">{{
+                                product.name }}</a></h6>
+                        <div class="rating mb-5">
+                            <ul>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                            </ul>
+                            <span>(01 review)</span>
+                        </div>
+                        <div class="price mb-10">
+                            <span>${{ product.price }}</span>
+                        </div>
+                    </div>
+                    <div class="product__add-cart text-center">
+                        <button type="button"
+                            class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- recommended__area-start -->
+{% if user.is_authenticated and recommended_products %}
+<section class="topsell__area-2 pt-15 pb-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__head d-flex justify-content-between mb-10">
+                    <div class="section__title">
+                        <h5 class="st-titile">Recommended For You</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in recommended_products %}
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item mb-20">
+                    <div class="product__thumb fix">
+                        <div class="product-image w-img">
+                            <a href="{% url 'shop:product_detail' product.id product.slug %}">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static 'img/product/tp-1.jpg' %}" alt="default">
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="product-action">
+                            <a href="{% url 'shop:product_detail' product.id product.slug %}"
+                                class="icon-box icon-box-1">
+                                <i class="fal fa-eye"></i>
+                                <i class="fal fa-eye"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-heart"></i>
+                                <i class="fal fa-heart"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-layer-group"></i>
+                                <i class="fal fa-layer-group"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product__content">
+                        <h6><a href="{% url 'shop:product_detail' product.id product.slug %}">{{
+                                product.name }}</a></h6>
+                        <div class="rating mb-5">
+                            <ul>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                            </ul>
+                            <span>(01 review)</span>
+                        </div>
+                        <div class="price mb-10">
+                            <span>${{ product.price }}</span>
+                        </div>
+                    </div>
+                    <div class="product__add-cart text-center">
+                        <button type="button"
+                            class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- recommended__area-end -->
+
+<!-- featured-start -->
+{% if featured_products %}
+<section class="featured light-bg pt-55 pb-40">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section__head d-flex justify-content-between mb-30">
+                    <div class="section__title">
+                        <h5 class="st-titile">Top Featured Products</h5>
+                    </div>
+                    <div class="button-wrap">
+                        <a href="{% url 'shop:shop' %}">See All Product <i class="fal fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in featured_products %}
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="product__item mb-20 white-bg">
+                    <div class="product__thumb fix">
+                        <div class="product-image w-img">
+                            <a href="{% url 'shop:product_detail' product.id product.slug %}">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                <img src="{% static 'img/features-product/fp-1.jpg' %}" alt="">
+                                {% endif %}
+                            </a>
+                        </div>
+                        {% if product.discount_price %}
+                        <div class="product__offer">
+                            <span class="discount">Sale</span>
+                        </div>
+                        {% endif %}
+                        <div class="product-action">
+                            <a href="{% url 'shop:product_detail' product.id product.slug %}"
+                                class="icon-box icon-box-1">
+                                <i class="fal fa-eye"></i>
+                                <i class="fal fa-eye"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-heart"></i>
+                                <i class="fal fa-heart"></i>
+                            </a>
+                            <a href="#" class="icon-box icon-box-1">
+                                <i class="fal fa-layer-group"></i>
+                                <i class="fal fa-layer-group"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product__content">
+                        <h6><a href="{% url 'shop:product_detail' product.id product.slug %}">{{
+                                product.name }}</a></h6>
+                        <div class="rating mb-5">
+                            <ul>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                <li><a href="#"><i class="fal fa-star"></i></a></li>
+                            </ul>
+                            <span>(01 review)</span>
+                        </div>
+                        <div class="price mb-10">
+                            <span>${{ product.price }}</span>
+                        </div>
+                    </div>
+                    <div class="product__add-cart text-center">
+                        <button type="button"
+                            class="cart-btn product-modal-sidebar-open-btn d-flex align-items-center justify-content-center w-100">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+<!-- featured-end -->
+
+<!-- moveing-text-area-start -->
+<section class="moveing-text-area">
+    <div class="container">
+        <div class="ovic-running">
+            <div class="wrap">
+                <div class="inner">
+                    <p class="item">Free UK Delivery - Return Over $100.00 ( Excluding Homeware ) | Free UK Collect From
+                        Store</p>
+                    <p class="item">Design Week / 15% Off the website / Code: AYOSALE-2020</p>
+                    <p class="item">Always iconic. Now organic. Introducing the $20 Organic Tee.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- moveing-text-area-end -->
+
+<!-- banner__area-start -->
+<section class="banner__area pt-60 pb-25">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div class="banner__item p-relative w-img mb-30">
+                    <div class="banner__img">
+                        <a href="product-details.html"><img src="{% static 'img/banner/banner-6.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="banner__content banner__content-sd text-center">
+                        <div class="banner-button mb-20">
+                            <a href="product-details.html" class="st-btn">HOT DEALS</a>
+                        </div>
+                        <h6><a href="product-details.html">Sale 30% Off <br> Top Computer Case Gaming</a></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="banner__item p-relative mb-30 w-img">
+                            <div class="banner__img">
+                                <a href="product-details.html"><img src="{% static 'img/banner/banner-7.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                            <div class="banner__content banner__content-sd text-center">
+                                <h6><a href="product-details.html">Electronic Deals</a></h6>
+                                <p>Laptop, Computer, Smartphone, Gampad</p>
+                                <div class="banner-button mt-20 d-none d-sm-block">
+                                    <a href="product-details.html" class="st-btn-3 b-radius">Shop Deals</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="banner__item p-relative w-img mb-30">
+                            <div class="banner__img">
+                                <a href="product-details.html"><img src="{% static 'img/banner/banner-8.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                            <div class="banner__content">
+                                <h6><a href="product-details.html">Hot Products <br> Laptop Ultra 4K 16”</a></h6>
+                                <p>Discount 20% On Products</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12">
+                <div class="banner__item p-relative mb-30 w-img">
+                    <div class="banner__img">
+                        <a href="product-details.html"><img src="{% static 'img/banner/banner-9.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="banner__content banner__content-sd text-center">
+                        <div class="banner-button mb-20">
+                            <a href="product-details.html" class="st-btn">HOT DEALS</a>
+                        </div>
+                        <h6><a href="product-details.html">Sport Edition <br> Best Choice of The Year</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner__area-end -->
+
+<!-- brand-area-start -->
+<section class="brand-area brand-area-d">
+    <div class="container">
+        <div class="brand-slider swiper-container pt-50 pb-45">
+            <div class="swiper-wrapper">
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-1.jpg' %}" alt="brand"></a>
+                </div>
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-2.jpg' %}" alt="brand"></a>
+                </div>
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-3.jpg' %}" alt="brand"></a>
+                </div>
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-4.jpg' %}" alt="brand"></a>
+                </div>
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-5.jpg' %}" alt="brand"></a>
+                </div>
+                <div class="brand-item w-img swiper-slide">
+                    <a href="#"><img src="{% static 'img/brand/brand-6.jpg' %}" alt="brand"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- brand-area-end -->
+
+<!-- cta-area-start -->
+<section class="cta-area d-ldark-bg pt-55 pb-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="cta-item cta-item-d mb-30">
+                    <h5 class="cta-title">Follow Us</h5>
+                    <p>We make consolidating, marketing and tracking your social media website easy.</p>
+                    <div class="cta-social">
+                        <div class="social-icon">
+                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="rss"><i class="fas fa-rss"></i></a>
+                            <a href="#" class="dribbble"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="cta-item mb-30">
+                    <h5 class="cta-title">Sign Up To Newsletter</h5>
+                    <p>Join 60.000+ subscribers and get a new discount coupon on every Saturday.</p>
+                    <div class="subscribe__form">
+                        <form action="#">
+                            <input type="email" placeholder="Enter your email here...">
+                            <button>subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="cta-item mb-30">
+                    <h5 class="cta-title">Download App</h5>
+                    <p>DukaMarket App is now available on App Store & Google Play. Get it now.</p>
+                    <div class="cta-apps">
+                        <div class="apps-store">
+                            <a href="#"><img src="{% static 'img/brand/app_ios.png' %}" alt=""></a>
+                            <a href="#"><img src="{% static 'img/brand/app_android.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- cta-area-end -->
+
+
+{% endblock %}
