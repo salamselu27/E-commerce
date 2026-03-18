@@ -58,8 +58,15 @@ Developed a robust e-commerce system featuring secure user authentication, a dyn
 
 ## Screenshots
 
-*(Add screenshots to a `/docs/images` folder in the repository and update the links below to showcase the application.)*
+### Homepage
+Clean & modern design, featuring hot deals and categories.
+![Homepage](docs/images/home.png)
 
-- **Homepage:** Clean & modern design, featuring hot deals and categories.
-- **My Account:** Dedicated login and registration portal.
-- **Admin Panel:** Powerful centralized dashboard to manage catalog and users.
+### My Account
+Dedicated login and registration portal.
+![Login 1](docs/images/login%201.png)
+![Login 2](docs/images/login%202.png)
+
+### Admin Panel
+Powerful centralized dashboard to manage catalog and users.
+![Admin Panel](docs/images/admin_dashboard.png)
